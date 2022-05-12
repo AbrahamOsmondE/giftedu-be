@@ -68,9 +68,9 @@ Response Data
 }
 ```
 
-### Donatee
+### Donee
 
-#### `POST /donatee_api`
+#### `POST /donee_api`
 
 Request Parameter
 
@@ -90,7 +90,7 @@ Response Data
 }
 ```
 
-#### `GET /donatee_api`
+#### `GET /donee_api`
 
 Request Parameter
 
@@ -100,7 +100,7 @@ Response Data
 
 ```json
 {
-    "donatees": [
+    "donees": [
     {
         "id": 1,
         "name": "Ferlita Child Care",
@@ -117,7 +117,7 @@ Response Data
 }
 ```
 
-#### `GET /donatee_api/<donatee_id>`
+#### `GET /donee_api/<donee_id>`
 
 Request Parameter
 
@@ -149,7 +149,7 @@ Response Data
 }
 ```
 
-#### `GET /donatee_api/fund/<donatee_id>`
+#### `GET /donee_api/fund/<donee_id>`
 
 Request Parameter
 
@@ -175,7 +175,7 @@ Request Parameter
   "description": "5-year-old boy from Johor Bahru",
   "photo": "base64string",
   "subcription_cost": 10,
-  "donatee_id": 1
+  "donee_id": 1
 }
 ```
 
@@ -206,13 +206,41 @@ Response Data
       {
           "id": 1,
           "created": "01/01/2022",
+          "title": "Hello World",
           "text": "I just attended my first day at Nanyang Primary School."
       },
       {
           "id": 2,
           "created": "02/01/2022",
+          "title": "Hello Sunshine",
           "text": "I got an A+ for my math test today."
       }
+  ]
+}
+```
+
+#### `GET /child_api/subscription/<child_id>`
+
+Request Parameter
+
+null
+
+Response Data
+
+```json
+{
+  "fund": 200,
+  "subscription": [
+    {
+      "id": 1,
+      "name": "Irvin",
+      "created": "01/01/2022"
+    },
+    {
+      "id": 2,
+      "name": "Ferlita",
+      "created": "02/01/2022"
+    }
   ]
 }
 ```
@@ -225,6 +253,7 @@ Request Parameter
 
 ```json
 {
+  "title": "Hello World",
   "text": "I just attended my first day at Nanyang Primary School.",
   "child_id": 1
 }
@@ -250,6 +279,7 @@ Response Data
 {
     "id": 1,
     "created": "01/01/2022",
+    "title": "Hello World",
     "text": "I just attended my first day at Nanyang Primary School."
 }
 ```
@@ -263,7 +293,7 @@ Request Parameter
 | Parameter Name    | Type | Required | Description               |
 | ----------------- | ---- | -------- | ------------------------- |
 | `donator_id`      | int  | Depends  | User ID to filter against |
-| `donatee_id`      | int  | Depends  | User ID to filter against |
+| `donee_id`      | int  | Depends  | User ID to filter against |
 
 Response Data
 
