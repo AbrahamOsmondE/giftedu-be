@@ -31,6 +31,30 @@ HTTP Method used:
 
 ### Donator
 
+#### `GET /donator_api`
+
+Request Parameter
+
+null
+
+Response Data
+
+```json
+[
+    {
+        "id": 1,
+        "name": "Irvin",
+        "phone_number": "12345678",
+        "photo": "photo_1"
+    },
+    {
+        "id": 2,
+        "name": "Ferlita",
+        "phone_number": "12345679",
+        "photo": "photo_2"
+    },
+```
+
 #### `POST /donator_api`
 
 Request Parameter
@@ -99,22 +123,22 @@ null
 Response Data
 
 ```json
-{
-    "donees": [
+[
     {
         "id": 1,
         "name": "Ferlita Child Care",
-        "photo": "base64string",
         "description": "Jurong-based Toddler Care Centre, built in 2023.",
+        "phone_number": "12345679",
+        "photo": "base64string"
     },
     {
         "id": 2,
-        "name": "Fer Child Care",
-        "photo": "base64string",
-        "description": "Tampines-based Toddler Care Centre, built in 2024.",
+        "name": "Vin Child Care",
+        "description": "Tampines-based Toddler Care Centre, built in 2023.",
+        "phone_number": "12345679",
+        "photo": "base64string"
     }
-    ]
-}
+]
 ```
 
 #### `GET /donee_api/<donee_id>`
@@ -174,7 +198,7 @@ Request Parameter
   "name": "Bram",
   "description": "5-year-old boy from Johor Bahru",
   "photo": "base64string",
-  "subcription_cost": 10,
+  "subscription_cost": 10,
   "donee_id": 1
 }
 ```
@@ -184,6 +208,35 @@ Response Data
 {
   "id": 1
 }
+```
+
+#### `GET /child_api`
+
+Request Parameter
+
+null
+
+Response Data
+
+```json
+[
+    {
+        "id": 1,
+        "name": "Bram",
+        "description": "5-year-old boy from Johor Bahru",
+        "photo": "base64string",
+        "subscription_cost": 10,
+        "donee": "Ferlita Child Care"
+    },
+    {
+        "id": 2,
+        "name": "Fer",
+        "description": "6-year-old boy from Johor Bahru",
+        "photo": "base64string",
+        "subscription_cost": 12,
+        "donee": "Ferlita Child Care"
+    }
+]
 ```
 
 #### `GET /child_api/<child_id>`
@@ -202,16 +255,17 @@ Response Data
   "photo": "base64string",
   "subcription_cost": 10,
   "fund": 200,
+  "donee": "Ferlita Child Care",
   "posts": [
       {
           "id": 1,
-          "created": "01/01/2022",
+          "created": "2022-05-12T15:47:15.799693Z",
           "title": "Hello World",
           "text": "I just attended my first day at Nanyang Primary School."
       },
       {
           "id": 2,
-          "created": "02/01/2022",
+          "created": "2022-05-12T15:47:15.799693Z",
           "title": "Hello Sunshine",
           "text": "I got an A+ for my math test today."
       }
@@ -234,12 +288,12 @@ Response Data
     {
       "id": 1,
       "name": "Irvin",
-      "created": "01/01/2022"
+      "created": "2022-05-12T15:47:15.799693Z"
     },
     {
       "id": 2,
       "name": "Ferlita",
-      "created": "02/01/2022"
+      "created": "2022-05-12T15:47:15.799693Z"
     }
   ]
 }
@@ -263,8 +317,33 @@ Response Data
 ```json
 {
   "id": 1,
-  "date_created": "01/01/2022"
+  "date_created": "2022-05-12T15:47:15.799693Z"
 }
+```
+
+#### `GET /post_api`
+
+Request Parameter
+
+null
+
+Response Data
+
+```json
+[
+    {
+        "id": 1,
+        "title": "Hello World",
+        "text": "I just attended my first day at Nanyang Primary School.",
+        "created": "2022-05-12T15:45:38.437490Z"
+    },
+    {
+        "id": 2,
+        "title": "Hello Sunshine",
+        "text": "I got an A+ for my math test today.",
+        "created": "2022-05-12T15:46:22.544806Z"
+    }
+]
 ```
 
 #### `GET /post_api/<post_id>`
@@ -278,9 +357,9 @@ Response Data
 ```json
 {
     "id": 1,
-    "created": "01/01/2022",
     "title": "Hello World",
-    "text": "I just attended my first day at Nanyang Primary School."
+    "text": "I just attended my first day at Nanyang Primary School.",
+    "created": "2022-05-12T15:47:15.799693Z"
 }
 ```
 
@@ -301,4 +380,87 @@ Response Data
 {
     "connected": true
 }
+```
+
+#### `POST /subscription_api`
+
+Request Parameter
+
+```json
+{
+  "donator_id": 1,
+  "donee_id": 1
+}
+```
+
+Response Data
+```json
+{
+  "id": 1,
+  "date_created": "2022-05-12T15:47:15.799693Z"
+}
+```
+
+#### `GET /subscription_api/donator/<donator_id>`
+
+Request Parameter
+
+null
+
+Response Data
+
+```json
+[
+    {
+        "id": 1,
+        "name": "Bram",
+        "created": "2022-05-12T15:53:01.170111Z"
+    },
+    {
+        "id": 2,
+        "name": "Fer",
+        "created": "2022-05-12T15:53:04.982439Z"
+    }
+]
+```
+
+#### `GET /subscription_api/child/<child_id>`
+
+Request Parameter
+
+null
+
+Response Data
+
+```json
+[
+    {
+        "id": 1,
+        "name": "Irvin",
+        "created": "2022-05-12T15:53:01.170111Z"
+    }
+]
+```
+
+#### `GET /subscription_api/donee/<donee_id>`
+
+Request Parameter
+
+null
+
+Response Data
+
+```json
+[
+    {
+        "id": 1,
+        "name": "Irvin",
+        "created": "2022-05-12T15:53:01.170111Z"
+    },
+    {
+        "id": 2,
+        "name": "Ferlita",
+        "created": "2022-05-12T15:53:04.982439Z"
+    }
+]
 ```
