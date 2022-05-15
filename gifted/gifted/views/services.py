@@ -72,12 +72,28 @@ def get_donee_int(donee_id):
     donee = Donee.objects.filter(id=donee_id).first()
     if not donee:
         raise ValueError("Donee not found")
+    
+    child_list = []
+    children = Child.objects.filter(donee_id=donee_id)
+    for child in children:
+        donee = Donee.objects.filter(id=child.donee_id.id).first()
+        child_detail = {
+            'id': child.id,
+            'name': child.name,
+            'description': child.description,
+            'photo': child.photo,
+            'subscription_cost': child.subscription_cost,
+            'donee': donee.name
+        }
+        child_list.append(child_detail)
+    
     donee_detail = {
         'id': donee.id,
         'name': donee.name,
         'description': donee.description,
         'phone_number': donee.phone_number,
-        'photo': donee.photo
+        'photo': donee.photo,
+        'children': child_list
     }
     return donee_detail
 

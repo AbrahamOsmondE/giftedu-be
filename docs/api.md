@@ -173,21 +173,7 @@ Response Data
   "name": "Ferlita Child Care",
   "phone_number": "12345679",
   "photo": "base64string",
-  "description": "Jurong-based Toddler Care Centre, built in 2023.",
-  "children": [
-    {
-      "id": 1,
-      "name": "Bram",
-      "description": "5-year-old boy from Johor Bahru",
-      "photo": "base64string"
-    },
-    {
-      "id": 2,
-      "name": "Brem",
-      "description": "6-year-old girl from Tekong Island",
-      "photo": "base64string"
-    }
-  ]
+  "description": "Jurong-based Toddler Care Centre, built in 2023."
 }
 ```
 
