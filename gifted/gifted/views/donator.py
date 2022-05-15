@@ -20,3 +20,9 @@ class DonatorListInt(APIView):
         donator_id = kwargs['donator_id']
         data = get_donator_int(donator_id)
         return Response(data=data)
+
+class DonatorFromName(APIView):
+    def get(self, request, *args, **kwargs):
+        donator_name = kwargs['donator_name']
+        data = get_donator_from_name(donator_name)
+        return Response(data=data)

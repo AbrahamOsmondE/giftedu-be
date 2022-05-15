@@ -21,6 +21,12 @@ class DoneeListInt(APIView):
         data = get_donee_int(donee_id)
         return Response(data=data)
 
+class DoneeFromName(APIView):
+    def get(self, request, *args, **kwargs):
+        donee_name = kwargs['donee_name']
+        data = get_donee_from_name(donee_name)
+        return Response(data=data)
+
 class DoneeListFund(APIView):
     def get(self, request, *args, **kwargs):
         donee_id = kwargs['donee_id']

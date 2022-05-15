@@ -22,9 +22,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('donator_api', donator.DonatorList.as_view(), name="donator_api"),
+    path('donator_api/get_id/<donator_name>', donator.DonatorFromName.as_view(), name="donator_api_from_name"),
     path('donator_api/<int:donator_id>', donator.DonatorListInt.as_view(), name="donator_api_int"),
 
     path('donee_api', donee.DoneeList.as_view(), name="donee_api"),
+    path('donee_api/get_id/<donee_name>', donee.DoneeFromName.as_view(), name="donee_api_from_name"),
     path('donee_api/<int:donee_id>', donee.DoneeListInt.as_view(), name="donee_api_int"),
     path('donee_api/fund/<int:donee_id>', donee.DoneeListFund.as_view(), name="donee_api_int"),
 
