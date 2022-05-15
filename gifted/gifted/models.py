@@ -46,7 +46,7 @@ class Post(models.Model):
 
 
 class Subscription(models.Model):
-    donator_id = models.ForeignKey(Donee, on_delete=models.CASCADE)
+    donator_id = models.ForeignKey(Donator, on_delete=models.CASCADE)
     child_id = models.ForeignKey(Child, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
 
