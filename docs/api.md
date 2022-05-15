@@ -63,7 +63,8 @@ Request Parameter
 {
   "name": "Irvin",
   "phone_number": "12345678",
-  "photo": "base64string"
+  "photo": "base64string",
+  "email": "irvin@gmail.com"
 }
 ```
 
@@ -120,7 +121,8 @@ Request Parameter
   "name": "Ferlita Child Care",
   "phone_number": "12345679",
   "photo": "base64string",
-  "description": "Jurong-based Toddler Care Centre, built in 2023."
+  "description": "Jurong-based Toddler Care Centre, built in 2023.",
+  "email": "fcc@gmail.com"
 }
 ```
 
