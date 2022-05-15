@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import include
 from gifted.views import donator, donee, child, subscription, post
 
 urlpatterns = [
@@ -38,4 +39,5 @@ urlpatterns = [
 
     path('post_api', post.PostList.as_view(), name="post_api"),
     path('post_api/<int:post_id>', post.PostListInt.as_view(), name="post_api_int"),
+    path('login/', include('api.urls')),
 ]
