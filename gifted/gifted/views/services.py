@@ -34,6 +34,18 @@ def get_donator_int(donator_id):
     }
     return donator_detail
 
+def get_donator_from_name(donator_name):
+    donator = Donator.objects.filter(name=donator_name).first()
+    if not donator:
+        raise ValueError("Donator not found")
+    donator_detail = {
+        'id': donator.id,
+        'name': donator.name,
+        'phone_number': donator.phone_number,
+        'photo': donator.photo
+    }
+    return donator_detail
+
 def get_donee():
     donee_list = []
     donees = Donee.objects.all()
@@ -68,6 +80,20 @@ def get_donee_int(donee_id):
         'photo': donee.photo
     }
     return donee_detail
+
+def get_donee_from_name(donee_name):
+    donee = Donee.objects.filter(name=donee_name).first()
+    if not donee:
+        raise ValueError("Donee not found")
+    donee_detail = {
+        'id': donee.id,
+        'name': donee.name,
+        'description': donee.description,
+        'phone_number': donee.phone_number,
+        'photo': donee.photo
+    }
+    return donee_detail
+
 
 def get_donee_fund(donee_id):
     donee = Donee.objects.filter(id=donee_id).first()
